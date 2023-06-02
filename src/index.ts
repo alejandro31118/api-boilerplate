@@ -18,12 +18,12 @@ app.use(cors())
 app.use(morgan('common'))
 app.use(helmet())
 
-app.use((_: Request, res: Response) => {
-  res.status(404).send('Resource not found')
-})
-
 app.get('/health', (_: Request, res: Response) => {
   res.send('<h1>All OK 👌</h1>')
+})
+
+app.use((_: Request, res: Response) => {
+  res.status(404).send('Resource not found')
 })
 
 app.listen(port, () => {
